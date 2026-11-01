@@ -1,1 +1,1 @@
-pip3 install configparser pymodbus pyserial_asyncio pyserial goodwe
+pip3 install configparser pymodbus==3.7.4 pyserial_asyncio pyserial goodwe==0.4.10
