@@ -32,8 +32,9 @@ if __name__ == "__main__":
 
             log("EMERGENCY zero -> IDM: attempt " + str(attempt) + "/"
                 + str(MAX_ATTEMPTS) + " did not return 0 (got: "
-                + str(idmval) + "), retrying")
-            time.sleep(RETRY_DELAY)
+                + str(idmval) + ")")
+            if attempt < MAX_ATTEMPTS:
+                time.sleep(RETRY_DELAY)
         else:
             log("EMERGENCY zero -> IDM: FAILED after "
                 + str(MAX_ATTEMPTS) + " attempts")
