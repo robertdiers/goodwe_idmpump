@@ -31,6 +31,7 @@ def writefloat(client, myadr_dec, feed_in, unitid):
 
 
 def writeandread(idm_ip, idm_port, feed_in):
+    client = None
     try:
 
         # connection iDM
@@ -44,4 +45,5 @@ def writeandread(idm_ip, idm_port, feed_in):
     except Exception as ex:
         print("ERROR IDM: ", ex)
     finally:
-        client.close()
+        if client is not None:
+            client.close()

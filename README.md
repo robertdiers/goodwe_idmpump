@@ -21,3 +21,13 @@ docker run -d --restart always -e INVERTER_IP=192.168.1.108 -e IDM_IP=192.168.1.
 
 ### create Docker image for your architecture
 ./image.sh
+
+### emergency cron job
+beside the regular job (every minute) a second cron job runs daily at 23:00 and
+unconditionally writes a 0 to the iDM register 74. It is completely independent
+of the GoodWe inverter (no `goodwe` import), so it still works if the regular
+script is broken. The write is retried 5 times with 10 seconds in between and
+each attempt is logged.
+
+The container timezone is fixed to `Europe/Berlin` (see Dockerfile), so 23:00
+means 23:00 local time.
